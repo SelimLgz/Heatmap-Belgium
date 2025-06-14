@@ -64,5 +64,66 @@ folium.Choropleth(
     bins=bins
 ).add_to(m)
 
+# Add custom icons for clubs
+clubs = [
+    {"name": "Anderlecht", "lat": 50.83415112259992, "lon": 4.29891755948624, \
+     "logo": "Heatmap Liege/Logo/Anderlecht.png"},
+
+    {"name": "Antwerp", "lat": 51.23244563352655, "lon": 4.472093472865853, \
+     "logo": "Heatmap Liege/Logo/Antwerp.png"},
+
+     {"name": "Beerschot", "lat": 51.18515949226264, "lon": 4.382210848856054, \
+     "logo": "Heatmap Liege/Logo/Beerschot.png"},
+
+     {"name": "Bruges", "lat": 51.19330505127287, "lon": 3.180100739052433, \
+     "logo": "Heatmap Liege/Logo/Bruges.png"},
+
+     {"name": "Cercle de Bruges", "lat": 51.19330505127287, "lon": 3.180100739052433, \
+     "logo": "Heatmap Liege/Logo/Cercle de Bruges.png"},
+
+     {"name": "Charleroi", "lat": 50.414220562376265, "lon": 4.452750627166207, \
+     "logo": "Heatmap Liege/Logo/Charleroi.png"},
+
+     {"name": "Dender", "lat": 50.8841080141755, "lon": 4.072654014377263, \
+     "logo": "Heatmap Liege/Logo/Dender.png"},
+
+     {"name": "Gantoise", "lat": 51.01646440861245, "lon": 3.733546694254544, \
+     "logo": "Heatmap Liege/Logo/Gantoise.png"},
+
+     {"name": "Genk", "lat": 51.00505489986331, "lon": 5.533362586232373, \
+     "logo": "Heatmap Liege/Logo/Genk.png"},
+
+     {"name": "Kortrijk", "lat": 50.830438262036196, "lon": 3.2490187465830513, \
+     "logo": "Heatmap Liege/Logo/Kortrijk.png"},
+
+     {"name": "Leuven", "lat": 50.86838821201999, "lon": 4.694395216215148, \
+     "logo": "Heatmap Liege/Logo/Leuven.png"},
+
+     {"name": "Liege", "lat": 50.609854432689545, "lon": 5.543357514011962, \
+     "logo": "Heatmap Liege/Logo/Liege.png"},
+
+     {"name": "Mechelen", "lat": 51.03783180885648, "lon": 4.471613256103485, \
+     "logo": "Heatmap Liege/Logo/Mechelen.png"},
+
+     {"name": "Saint truidense", "lat": 50.81353810128787, "lon": 5.166297971733279, \
+     "logo": "Heatmap Liege/Logo/Saint truidense.png"},
+
+     {"name": "USG", "lat": 50.817815456549255, "lon": 4.329338801355258, \
+     "logo": "Heatmap Liege/Logo/USG.png"},
+
+     {"name": "Westerlo", "lat": 51.09487534320355, "lon": 4.928956299856769, \
+     "logo": "Heatmap Liege/Logo/Waterlo.png"}
+]
+
+
+for club in clubs:
+    icon = folium.CustomIcon(club["logo"], icon_size=(40, 40))
+    folium.Marker(
+        location=[club["lat"], club["lon"]],
+        icon=icon,
+        tooltip=club["name"]
+    ).add_to(m)
+
 # Save the map to an HTML file
+
 m.save("heatmap.html")
